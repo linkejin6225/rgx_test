@@ -10,7 +10,7 @@ all: $(TARGET)
 $(TARGET):comp2.c comp2.h
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
 
-$(install): $(TARGET)
+install: $(TARGET)
 	cp -f $(TARGET) $(IMAGES_LIB)
 	cp -f ./comp2.h $(IMAGES_INCLUDE)
 # 清理编译产物
