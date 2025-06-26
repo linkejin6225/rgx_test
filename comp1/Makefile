@@ -1,7 +1,7 @@
 # comp1的Makefile（依赖comp2的动态库）
 CC ?= gcc
-CFLAGS ?= -Wall -Wextra -I$(IMAGES_LIB) -I$(IMAGES_INCLUDE)
-LDFLAGS ?= -L$(IMAGES_LIB) -Wl,-rpath=/usr/lib  # 指定动态库的搜索路径（组件B的目录）
+CFLAGS ?= -Wall -Wextra -I$(DEP_LIB) -I$(DEP_INCLUDE)
+LDFLAGS ?= -L$(DEP_LIB) -Wl,-rpath=/usr/lib  # 指定动态库的搜索路径（组件B的目录）
 LIBS ?= -lcomp2                  # 链接动态库（libb.so，省略前缀"lib"和后缀".so"）
 TARGET ?= comp1              # 可执行文件目标
 
