@@ -11,8 +11,12 @@ $(TARGET):comp2.c comp2.h
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
 
 install: $(TARGET)
+	mkdir -p ./tmp/usr/lib/
 	cp -f $(TARGET) $(DEP_LIB)
 	cp -f ./comp2.h $(DEP_INCLUDE)
+	cp -f $(TARGET) ./tmp/usr/lib/
+
 # 清理编译产物
 clean:
+	rm -rf ./tmp
 	rm -f $(TARGET)
