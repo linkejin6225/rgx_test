@@ -2,19 +2,18 @@
 CC ?= gcc
 CFLAGS ?= -Wall -Wextra -fPIC  # -fPIC：位置无关代码（动态库必需）
 LDFLAGS ?= -shared             # -shared：生成动态库
-TARGET = ./libcomp2.so              # 动态库目标文件（命名规则：libxxx.so）
+TARGET = $(OUTPUT)/comp2/usr/lib/libcomp2.so              # 动态库目标文件（命名规则：libxxx.so）
 
 # 编译规则：生成动态库
 all: $(TARGET)
 
 $(TARGET):comp2.c comp2.h
+	mkdir -p $(OUTPUT)/comp2/usr/lib/
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
 
 install: $(TARGET)
-	mkdir -p ./tmp/usr/lib/
 	cp -f $(TARGET) $(DEP_LIB)
 	cp -f ./comp2.h $(DEP_INCLUDE)
-	cp -f $(TARGET) ./tmp/usr/lib/
 
 # 清理编译产物
 clean:
