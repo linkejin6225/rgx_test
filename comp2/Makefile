@@ -8,7 +8,7 @@ TARGET = $(OUTPUT_DIR)/comp2/usr/lib/libcomp2.so              # 动态库目标�
 all: $(TARGET)
 
 $(TARGET):comp2.c comp2.h
-	mkdir -p $(OUTPUT)/comp2/usr/lib/
+	mkdir -p $(OUTPUT_DIR)/comp2/usr/lib/
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
 
 install: $(TARGET)
@@ -17,5 +17,4 @@ install: $(TARGET)
 
 # 清理编译产物
 clean:
-	rm -rf ./tmp
 	rm -f $(TARGET)
