@@ -7,7 +7,7 @@ all: $(TARGET)
 
 $(TARGET): comp1.c
 	mkdir -p $(OUTPUT_DIR)/comp1/usr/bin/
-	$(TARGET_CC) $(CFLAGS) -o $@ $< $(LDFLAGS) $(LIBS)
+	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS) $(LIBS)
 
 # 清理编译产物
 clean:
