@@ -1,5 +1,5 @@
-Name:         comp2
-Version:      1.0
+Name:         %{?name}
+Version:      %{?version}
 Release:      1%{?dist}
 Summary:      RPM package for DEB deployment
 License:      GPLv3+
@@ -9,8 +9,7 @@ Requires:     /bin/sh
 Deploys and manages DEB package during RPM lifecycle
 
 %install
-mkdir -p %{buildroot}/usr/lib/
-cp %{_sourcedir}/usr/lib/libcomp2.so %{buildroot}/usr/lib/
+##__AUTO_INSTALL__##
 
 %post
 for deb in /opt/rgx-os/debs/*.deb; do
@@ -26,7 +25,7 @@ for deb in /opt/rgx-os/debs/*.deb; do
 done
 
 %files
-/usr/lib/libcomp2.so
+##__AUTO_FILES__##
 
 %changelog
 * Tue Jun 25 2024 YourName <you@example.com>
