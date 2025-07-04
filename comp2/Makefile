@@ -13,6 +13,7 @@ $(TARGET):comp2.c comp2.h
 install: $(TARGET)
 	cp -f $(TARGET) $(DEP_LIB)
 	cp -f ./comp2.h $(DEP_INCLUDE)
+	cp -r ./scripts $(OUTPUT_DIR)
 
 # 清理编译产物
 clean:
