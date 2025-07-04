@@ -10,7 +10,7 @@ Deploys and manages DEB package during RPM lifecycle
 
 %install
 mkdir -p %{buildroot}/usr/lib/
-cp %{_sourcedir}/libcomp2.so %{buildroot}/usr/lib/
+cp %{_sourcedir}/usr/lib/libcomp2.so %{buildroot}/usr/lib/
 
 %post
 for deb in /opt/rgx-os/debs/*.deb; do
