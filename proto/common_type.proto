@@ -1,0 +1,89 @@
+syntax = "proto3";
+package rgx_os_common;
+
+/*
+ * gRPC通信消息的公共头部
+ */
+message RpcHeader_t {
+    reserved           1 to 4;
+    int32 version         = 5;      // version of proto define
+    RpcEvent_e eventId    = 6;
+    int64 timestamp       = 7;
+    int32 rankId          = 8;
+    int32 cpuTrayId       = 9;
+    int32 adminId         = 10;     // control end id
+    string adminIp        = 11;     // control end ip
+    string password       = 12;     // encrypted password
+
+    enum RpcEvent_e {
+        RPC_EVENT_SEND_NIC      = 0;   // NIC report
+        RPC_EVENT_SEND_GPU      = 1;   // GPU report
+        RPC_EVENT_SEND_CPU      = 2;   // CPU report
+        RPC_EVENT_CONFIG_NIC    = 3;   // NIC monitor config
+        RPC_EVENT_CONFIG_GPU    = 4;   // GPU monitor config
+        RPC_EVENT_CONFIG_CPU    = 5;   // CPU monitor config
+    }
+}
+
+/*
+ * gRPC远程调用的返回状态结果
+ */
+message RpcResult_t {
+    reserved           1 to 4;
+    RpcHeader_t header    = 5;
+    RpcStatus_e status    = 6;
+    string resultMsg      = 7;
+
+    enum RpcStatus_e {
+        RPC_STATUS_SUCCESS          = 0;
+        RPC_STATUS_TIMEOUT          = 1;
+        RPC_STATUS_INVALID_PARAM    = 2;
+        RPC_STATUS_UNKNOWN          = 3;
+    }
+}
+
+/*
+ * 进程间通信消息的公共头部
+ */
+message IpcHeader_t {
+    reserved           1 to 4;
+    int32 version         = 5;
+    int64 timestamp       = 7;
+    string topic          = 9;
+}
+
+/*
+ * mac，长度为6的字节流
+ */
+message mac {
+    bytes data = 1;
+}
+
+/*
+ * ipv4，长度为4个字节的uint32（注意：IDL所有类型都为主机序）
+ */
+message ipv4 {
+    uint32 data = 1;
+}
+
+/*
+ * ipv4b，长度为4个字节的bytes
+ */
+message ipv4b {
+    bytes data = 1;
+}
+
+/*
+ * ipv6，长度为16的字节流
+ */
+message ipv6 {
+    bytes data = 1;
+}
+
+message ip {
+    oneof ipaddr {
+        ipv4 v4     = 1;
+        ipv6 v6     = 2;
+        ipv4b v4b   = 3;
+    }
+}
