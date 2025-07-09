@@ -11,8 +11,8 @@ $(TARGET):comp2.c comp2.h
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
 
 install: $(TARGET)
-	cp -f $(TARGET) $(DEP_LIB)
-	cp -f ./comp2.h $(DEP_INCLUDE)
+	cp -f $(TARGET) $(IMAGES_LIB)
+	cp -f ./comp2.h $(IMAGES_INCLUDE)
 	cp -r ./scripts $(OUTPUT_DIR)
 
 # 清理编译产物
