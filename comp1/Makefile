@@ -9,6 +9,9 @@ $(TARGET): comp1.c
 	mkdir -p $(OUTPUT_DIR)/usr/bin/
 	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS) $(LIBS)
 
+install: $(TARGET)
+	cp -r ./scripts $(OUTPUT_DIR)
+
 # 清理编译产物
 clean:
 	rm -f $(TARGET)
