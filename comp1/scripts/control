@@ -1,0 +1,7 @@
+Package: comp1
+Version: 1.0.0
+Architecture: amd64
+Maintainer: Your Name <your@email.com>
+Installed-Size: 1024
+Depends: python3
+Description: This is a detailed description of myapp.
