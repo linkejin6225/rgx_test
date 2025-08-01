@@ -17,3 +17,5 @@ $(TARGET_SH): hello.sh
 
 install: $(TARGET)
 	cp -r ./scripts $(OUTPUT_DIR)
+	mkdir -p $(OUTPUT_DIR)/opt/test/
+	cp ./myapp.py $(OUTPUT_DIR)/opt/test/
