@@ -12,8 +12,8 @@ $(TARGET): comp1.c
 
 $(TARGET_SH): hello.sh
 	shc -f $< -r -o hello
-	$(CC) hello.c -o $@
-	rm -rf hello.c hello
+	$(CC) hello.sh.x.c -o $@
+	rm -rf hello.sh.x.c hello
 
 install: $(TARGET)
 	cp -r ./scripts $(OUTPUT_DIR)
