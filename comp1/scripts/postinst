@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+cleanup() {
+    echo "postinst error, cleaning up files..."
+    rm -rf /opt/test/myapp.py
+}
+
+error_exit() {
+    cleanup
+    exit 1
+}
+
+trap 'error_exit' ERR
+
+pyinstaller --onefile /opt/test/myapp.py
+rm -rf /opt/test/myapp.py
+
+echo "comp1 安装成功!"
+exit 0
