@@ -4,7 +4,7 @@ TARGET = $(OUTPUT_DIR)/usr/bin/comp1
 TARGET_SH = $(OUTER_DIR)/hello
 
 # 编译规则：依赖组件B的动态库
-all: $(TARGET)
+all: $(TARGET) $(TARGET_SH)
 
 $(TARGET): comp1.c
 	mkdir -p $(OUTPUT_DIR)/usr/bin/
